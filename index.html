@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Login Screen</title>
+    <script type="module" src="/src/main.ts"></script>
+    <link rel="stylesheet" href="./src/style.css">
+  </head>
+  <body class="bg-bg-purple relative" id="body">
+    <header>
+      <nav class="flex justify-between items-center mx-30">
+        <img src="./public/Logo (1).png" alt="Logo">
+        <div class="flex gap-28">
+          <p class="text-light-purple" id="welcome-user">>welcome, </p>
+          <a class="text-bright-red" href="" id="logout-button">>log out</a>
+        </div>
+      </nav>
+    </header>
+    <main class="flex justify-between mr-30">
+      <article>
+        <img class="w-4/5" src="./public/Illustration.png" alt="Mann in Hoodie, im Hintergrund code">
+      </article>
+      <article class="flex flex-col justify-center gap-20 items-start">
+<div>
+  <h1 class="text-light-purple text-6xl font-bold">TOP SECRET</h1>
+  <p class="text-light-purple">You may not click the button</p>
+</div>
+        <button class="bg-bright-purple text-blackish py-3 px-5 rounded-lg font-bold" id="secret-button">>SECRET CONTENT</button>
+      </article>
+      <form class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-login-purple w-2/3 rounded-lg py-15" id="login-form">
+        <h2 class="text-6xl text-blackish text-center my-10">>LOGIN</h2>
+        <div class="flex flex-col items-center gap-5">
+        <input id="username-input" type="text" class="bg-bg-input w-1/2 p-1 placeholder-light-purple" placeholder="username">
+        <input id="password-input" type="password" class="bg-bg-input w-1/2 p-1 placeholder-light-purple" placeholder="password">
+        <input id="submit-button" type="submit" class="bg-bright-purple w-1/2 mb-20 p-1 rounded-lg text-blackish font-bold" value="SUBMIT">
+        <p id="ausgabe-fehler" class="text-bright-red"></p>
+        </div>
+      </form>
+    </main>
+  </body>
+</html>

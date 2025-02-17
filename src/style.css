@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "roboto-mono";
+  src: url("/RobotoMono-VariableFont_wght.ttf");
+}
+
+@theme {
+  --color-bg-purple: #3f3d56;
+  --color-light-purple: #8985A8;
+  --color-blackish: #2f2e41;
+  --color-bright-purple: #6c63ff;
+  --color-login-purple: #8985a8;
+  --color-bg-input: #c4c4c4;
+  --color-bright-red: #ff002e;
+}
+
+*{
+  font-family: "roboto-mono";
+}
