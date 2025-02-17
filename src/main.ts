@@ -1,20 +1,3 @@
-//..In dieser Aufgabe sollst du eine passwortgeschützte Seite mit Login-Fenster programmieren.
-//..Wenn der/die User:in die Seite aufruft sieht er/sie ein Login-Formular (siehe Vorschau).
-
-//..Hinter dem Login-Formular befindet sich die “geschützte” Seite.
-//..Erst bei Eingabe einer gültigen Name-Passwort-Kombination verschwindet das Formular.
-
-//..Danach wird der dahinter liegende Inhalt sichtbar (die Seite wird nicht verlassen).
-//..Das Passwort ist case-sensitive. Der Benutzername nicht.
-//..Die Abfrage, ob ein Passwort gültig ist, erfolgt via TypeScript.
-//..Es existiert ein Array mit gültigen Name-Passwort-Kombinationen (siehe Code-Snippet).
-
-//..Der Name des/der aktuell eingeloggten Benutzer:in wird auf der Seite angezeigt.
-
-//! Cookie fehlt
-//..Bei erfolgreichem Login wird ein Cookie gesetzt. Wenn das Cookie gesetzt ist, soll der/die User:in sich nicht nochmal einloggen müssen.
-//..Ein Klick auf die Schaltfläche “Logout” entfernt das Cookie und die Seite wird verlassen.
-
 type UserData = {
   userName: string;
   password: string;
@@ -74,65 +57,77 @@ const welcomeUserElement = document.querySelector("#welcome-user");
 const logoutElement = document.querySelector("#logout-button");
 const wrongInputOutput = document.querySelector("#ausgabe-fehler");
 const secretButton = document.querySelector("#secret-button");
-const bodyElement = document.querySelector("#body")
+const bodyElement = document.querySelector("#body");
+
+
 
 //Login Daten auswerten
 function evaluateUserInput() {
-  if (userNameInput && passwordInput) {
+  if (
+    userNameInput &&
+    passwordInput &&
+    loginFormElement &&
+    welcomeUserElement &&
+    wrongInputOutput
+  ) {
     const userNameValue = userNameInput.value;
     const passwordValue = passwordInput.value;
-
+    //!Die Fehlermeldung funktioniert nicht
     allUserData.forEach((user) => {
       if (
         userNameValue.toLowerCase() === user.userName &&
         passwordValue === user.password
       ) {
-        if (loginFormElement && welcomeUserElement) {
-          loginFormElement.className = "opacity-0";
-          welcomeUserElement.textContent += `${user.userName}`;
-        }
-      } else if (
-        userNameValue.toLowerCase() !== user.userName &&
-        passwordValue === user.password
-      ) {
-        if (wrongInputOutput) {
-          wrongInputOutput.textContent = "*user does not exist";
-        }
-      } else if (
-        userNameValue.toLowerCase() === user.userName &&
-        passwordValue !== user.password
-      ) {
-        if (wrongInputOutput) {
-          wrongInputOutput.textContent = "*password is wrong";
-        }
+        loginFormElement.className = "opacity-0 w-0";
+        welcomeUserElement.textContent += `${user.userName}`;
+      } else if (userNameValue.toLowerCase() !== user.userName) {
+        wrongInputOutput.textContent = "*user does not exist";
+      } else if (passwordValue !== user.password) {
+        wrongInputOutput.textContent = "*password is wrong";
       } else {
-        if (wrongInputOutput) {
-          wrongInputOutput.textContent =
-            "*either password or username is wrong";
-        }
+        wrongInputOutput.textContent = "*either password or username is wrong";
       }
     });
   }
+}
+
+//save cookie
+function saveCookie () {
+  if (userNameInput)
+    document.cookie = `username=${userNameInput.value}`
+}
+
+//! Wie kriege ich Cookie richtig gelöscht? Inputfeld ist dann ja leer
+//! plus einloggen nicht nötig checke ich nicht
+//delete cookie
+function deleteCookie () {
+if (userNameInput) {
+  document.cookie = `username=${userNameInput.value}; expires=Thu, 01 1970 00:00:00 UTC`;
+}
 }
 
 //login
 submitButton?.addEventListener("click", (event) => {
   event.preventDefault();
   evaluateUserInput();
+  saveCookie();
 });
 
 //logout zurück zur Startseite
 logoutElement?.addEventListener("click", () => {
   if (loginFormElement) {
-    loginFormElement.className = "opacity-1";
+    loginFormElement.className = "opacity-5";
+    deleteCookie();
   }
 });
 
 //secret Button Event
-secretButton?.addEventListener("click", ()=> {
+secretButton?.addEventListener("click", () => {
   if (bodyElement) {
     bodyElement.innerHTML = "";
-    bodyElement.innerHTML = "VIRUS VIRUS VIRUS - 🤡 you deleted all your data 🤡 - VIRUS VIRUS VIRUS"
-    bodyElement.className = "text-center text-8xl text-bright-red blink"
+    bodyElement.innerHTML = `VIRUS VIRUS VIRUS - <span class="spin"><span class="spin">🤡</span><span class="spin">🤡</span><span class="spin">🤡</span><span class="spin">🤡</span><span class="spin">🤡</span><span class="spin">🤡</span></span> - VIRUS VIRUS VIRUS`;
+    bodyElement.className = "text-center text-8xl text-bright-red my-50 blink";
   }
-})
+});
+
+//! Bonus?

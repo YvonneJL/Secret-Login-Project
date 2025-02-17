@@ -7,7 +7,7 @@
 
 @theme {
   --color-bg-purple: #3f3d56;
-  --color-light-purple: #8985A8;
+  --color-light-purple: #8985a8;
   --color-blackish: #2f2e41;
   --color-bright-purple: #6c63ff;
   --color-login-purple: #8985a8;
@@ -15,15 +15,37 @@
   --color-bright-red: #ff002e;
 }
 
-*{
+* {
   font-family: "roboto-mono";
 }
 
 @keyframes blink {
-  0%, 100% {opacity: 5; }
-  50% { opacity: 0;}
+  0%,
+  100% {
+    opacity: 5;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 
 .blink {
   animation: blink 1s ease-in-out infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spin {
+  animation: rotate 1s linear infinite;
+  transform-origin: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
