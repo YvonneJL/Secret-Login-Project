@@ -133,6 +133,6 @@ secretButton?.addEventListener("click", ()=> {
   if (bodyElement) {
     bodyElement.innerHTML = "";
     bodyElement.innerHTML = "VIRUS VIRUS VIRUS - 🤡 you deleted all your data 🤡 - VIRUS VIRUS VIRUS"
-    bodyElement.className = "text-center text-8xl text-bright-red"
+    bodyElement.className = "text-center text-8xl text-bright-red blink"
   }
 })

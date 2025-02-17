@@ -18,3 +18,12 @@
 *{
   font-family: "roboto-mono";
 }
+
+@keyframes blink {
+  0%, 100% {opacity: 5; }
+  50% { opacity: 0;}
+}
+
+.blink {
+  animation: blink 1s ease-in-out infinite;
+}
