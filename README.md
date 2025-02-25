@@ -1,5 +1,6 @@
 # Secret Content Login Page
 
+[Macbook-Air-localhost-zb5335e6yjfqf4.webm](https://github.com/user-attachments/assets/997fc0e4-481e-4110-a4cd-31b7eb70c7f5)
 
 
 Das Projekt „Secret Content Login Page“ wurde im Rahmen des sechsmonatigen Web-Development-Kurses während des „TypeScript“-Moduls entwickelt. Ziel dieses Projekts war es, meine neu erlernten Fähigkeiten in der Programmiersprache TypeScript zu demonstrieren. 
