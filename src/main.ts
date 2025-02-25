@@ -131,3 +131,6 @@ logoutElement?.addEventListener("click", () => {
 function deleteStorage() {
   localStorage.removeItem("user");
 }
+
+
+//! README
